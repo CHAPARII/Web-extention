@@ -51,7 +51,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 const themeBtn = document.getElementById('themeBtn');
 if(themeBtn){ themeBtn.addEventListener('click', ()=>{ const t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', t); }); }
 
-/* toast */
 function showToast(msg){
   const t = document.createElement('div');
   t.textContent = msg;
@@ -64,7 +63,6 @@ function showToast(msg){
   setTimeout(()=>{ t.style.opacity='0'; t.style.transition='opacity .3s'; setTimeout(()=> t.remove(), 300); }, 1400);
 }
 
-/* auth modal */
 const loginBtn = document.getElementById('loginBtn');
 const loginModal = document.getElementById('loginModal');
 const loginClose = document.getElementById('loginClose');
@@ -94,7 +92,6 @@ function tryLogin(){
     closeLogin();
     showToast('Login successful');
     if(document.body.getAttribute('data-page') === 'exclusive'){
-      /* stay on page and reveal content */
     }else{
       setTimeout(()=>{ location.href = 'exclusive.html'; }, 450);
     }
@@ -106,7 +103,6 @@ function tryLogin(){
 if(authSubmit){ authSubmit.addEventListener('click', tryLogin); }
 if(authPass){ authPass.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') tryLogin(); }); }
 
-/* exclusive page behavior: force login every load */
 addEventListener('load', ()=>{
   if(document.body.getAttribute('data-page') === 'exclusive'){
     setAuthed(false);
@@ -120,7 +116,6 @@ addEventListener('load', ()=>{
   }
 });
 
-/* copy link on index footer */
 const copyLink = document.getElementById('copy-link');
 if(copyLink){
   copyLink.addEventListener('click',(e)=>{
